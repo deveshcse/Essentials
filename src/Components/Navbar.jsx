@@ -72,7 +72,7 @@ const Navbar = () => {
 
   return (
     <div className="sticky top-0 z-50 w-full bg-white shadow-md">
-      <div className="flex justify-between items-center p-4 md:px-10">
+      <div className="flex justify-between items-center p-4 md:px-32">
         {/* Logo and Links */}
         <div className="flex items-center">
           <Link
@@ -133,7 +133,7 @@ const Navbar = () => {
             <div className="flex items-center border rounded-md overflow-hidden">
               <input
                 type="text"
-                placeholder="Search..."
+                placeholder="What are you looking for?"
                 className="w-full p-2 focus:outline-none"
               />
               <button className="p-2 bg-gray-100">

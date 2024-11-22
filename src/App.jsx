@@ -2,6 +2,7 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Home from "./Components/Home";
 import SignUpLogin from "./Components/SignUpLogin";
+import ProductContainer from "./Components/ProductContainer";
 
 const AppLayout = () => {
   return (
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       { path: "/signUpLogin", element: <SignUpLogin /> },
+      { path: "/product/:id", element: <ProductContainer /> },
       { path: "*", element: <NotFoundPage /> },
     ],
   },

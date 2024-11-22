@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import CarousalItems from "./CarousalItems";
+import { Link } from "react-router-dom";
+
 const Carousal = () => {
   const [data, setData] = useState();
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -11,12 +13,8 @@ const Carousal = () => {
     setData(carousalData);
   };
 
-
-
-  
   useEffect(() => {
     getdata();
-
   }, []);
 
   const getPrevious = () => {
@@ -39,7 +37,16 @@ const Carousal = () => {
   if (data) {
     return (
       <div className="h-full col-span-3 px-5 bg-black">
-        <CarousalItems slide={data[currentIndex]} next = {getNext} previous ={getPrevious} items={data.length} setCurrentIndex={setCurrentIndex} currentIndex={currentIndex}  />
+       
+          <CarousalItems
+            slide={data[currentIndex]}
+            next={getNext}
+            previous={getPrevious}
+            items={data.length}
+            setCurrentIndex={setCurrentIndex}
+            currentIndex={currentIndex}
+          />
+       
       </div>
     );
   }
