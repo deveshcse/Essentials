@@ -1,24 +1,40 @@
-import React from 'react'
+import React from "react";
 import { RiArrowRightSLine } from "react-icons/ri";
-const Filters = () => {
-  return (
-    <div className='hidden md:block  h-full col-span-1 text-gray-800 font-title text-base  '>
-      <ul>
-        <li className='flex items-center justify-between py-2'><span>Women's fashion</span> <span className=''><RiArrowRightSLine size={24}/></span>  
-        </li>
-        <li className='flex items-center justify-between py-2'><span>Men's fashion</span>   <span className=''><RiArrowRightSLine size={24}/></span>  
-        </li>
-        
-        <li className='py-2'>Electronics</li>
-        <li className='py-2'>Home & Lifestyle</li>
-        <li className='py-2'>Medicine</li>
-        <li className='py-2'>Sports & Outdoor</li>
-        <li className='py-2'>Baby's & Toys</li>
-        <li className='py-2'>Groceries & Pets</li>
-        <li className='py-2'>Helth & Beauty</li>
-      </ul>
-    </div>
-  )
-}
+import { useState, useEffect } from "react";
 
-export default Filters
+const Filters = () => {
+  const [allCategories, setAllCategories] = useState();
+  const getCategoriesList = async () => {
+    const categoriesList = await fetch(
+      "https://dummyjson.com/products/category-list"
+    );
+    const categoriesListJson = await categoriesList.json();
+    setAllCategories(categoriesListJson);
+  };
+
+  useEffect(() => {
+    getCategoriesList();
+    console.log(allCategories);
+  }, []);
+  return (
+    <div className="hidden  h-full md:h-[400px] col-span-1 text-gray-800 font-title text-base md:flex flex-col overflow-scroll "   style={{
+      scrollbarWidth: "none", // Hides scrollbar in Firefox
+      msOverflowStyle: "none", // Hides scrollbar in Internet Explorer/Edge
+    }}>
+      {allCategories &&
+        allCategories.map((category) => (
+          <div
+            key={category}
+            className="flex items-center justify-between pb-4 capitalize"
+          >
+            <span>{category}</span>
+            <span className="mr-10">
+              <RiArrowRightSLine size={24} className="" />
+            </span>
+          </div>
+        ))}
+    </div>
+  );
+};
+
+export default Filters;

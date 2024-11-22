@@ -7,7 +7,7 @@ const ProductCard = ({props, next, previous}) => {
 
   console.log(props);
 
-  const {title,thumbnail,price,rating,discountPercentage} = props;
+  const {title,thumbnail,price,rating,discountPercentage,reviews} = props;
   console.log(title,thumbnail,price,rating,discountPercentage);
   
   
@@ -41,7 +41,7 @@ const ProductCard = ({props, next, previous}) => {
         </div>
         <div className="flex gap-4">
           <div><RatingComponent rating={rating}/></div>
-          <span className="text-gray-500 font-semibold">(88)</span>
+          <span className="text-gray-500 font-semibold">{reviews.length}</span>
         </div>
       </div>
     </div>
