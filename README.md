@@ -1,6 +1,6 @@
 # Essentials: An E-commerce Platform  
 
-**Essentials** is a robust and visually appealing e-commerce platform that delivers a seamless shopping experience. With a modern tech stack, pixel-perfect design, and essential features, this app showcases your proficiency in React.js and front-end development.  
+**Essentials** is a robust and visually appealing e-commerce platform that delivers a seamless shopping experience. With a modern tech stack, pixel-perfect design, and essential features, this app demonstrates advanced front-end development practices.  
 
 ---
 
