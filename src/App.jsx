@@ -3,6 +3,7 @@ import Navbar from "./Components/Navbar";
 import Home from "./Components/Home";
 import SignUpLogin from "./Components/SignUpLogin";
 import ProductContainer from "./Components/ProductContainer";
+import AllProductView from "./Components/AllProductView";
 
 const AppLayout = () => {
   return (
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "/signUpLogin", element: <SignUpLogin /> },
       { path: "/product/:id", element: <ProductContainer /> },
+      { path: "/allProduct/:category", element: <AllProductView /> },
       { path: "*", element: <NotFoundPage /> },
     ],
   },
