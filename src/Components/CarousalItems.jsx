@@ -11,13 +11,12 @@ const CarousalItems = ({
   setCurrentIndex,
   currentIndex,
 }) => {
-  console.log(slide, slide.id);
-
   const indicator = [...Array(items).keys()];
 
   return (
     <div className="m-auto relative flex  md:gap-10 justify-center items-center h-full md:h-[400px] bg-black text-white">
-        <Link to={'/product/'+ slide.id}><div className="flex gap-5 justify-center items-center h-full px-20 cursor-pointer">
+      <Link to={"/product/" + slide.id}>
+        <div className="flex gap-5 justify-center items-center h-full px-20 cursor-pointer">
           <div className="flex  flex-col gap-2 md:gap-5 ">
             <h2 className="font-title text-base ">{slide.title}</h2>
             <h2 className="font-heading md:text-5xl font-semibold">
@@ -37,14 +36,9 @@ const CarousalItems = ({
               </button>
             </div>
           </div>
-          <img
-            src={slide?.thumbnail}
-            alt="img"
-            className="w-60 md:w-80"
-          />
+          <img src={slide?.thumbnail} alt="img" className="w-60 md:w-80" />
         </div>
-        </Link>
-
+      </Link>
 
       <div className="absolute top-0 h-full w-full flex justify-between items-center pointer-events-none">
         <button onClick={previous} className="pointer-events-auto">
