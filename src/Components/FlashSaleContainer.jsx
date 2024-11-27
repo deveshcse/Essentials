@@ -21,7 +21,6 @@ const FlashSaleContainer = () => {
     const data = await fetch("https://dummyjson.com/products");
     const json = await data.json();
     setSalesData(json.products);
-    console.log("flashsale data", salesData);
   };
 
   useEffect(() => {
