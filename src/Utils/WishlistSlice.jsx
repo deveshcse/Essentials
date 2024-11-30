@@ -10,7 +10,7 @@ const WishlistSlice = createSlice({
   reducers: {
     removeFromWishlist: (state, action) => {
         state.wishlistItems = state.wishlistItems.filter(
-            (item) => item.id !== action.payload.id
+            (item) => item.id !== action.payload
           );
     },
     toggleWishlistItem: (state, action) => {
