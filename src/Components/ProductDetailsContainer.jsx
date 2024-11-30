@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../Utils/CartSlice";
 import { toggleWishlistItem } from "../Utils/WishlistSlice";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const ProductDetailsContainer = ({ productDetails }) => {
   const {
@@ -24,9 +25,11 @@ const ProductDetailsContainer = ({ productDetails }) => {
     category,
     stock,
   } = productDetails;
-
+  
+  const navigate = useNavigate();
   const wishlistItems = useSelector((state) => state.wishlist.wishlistItems);
   const cartItems = useSelector((state) => state.cart.cartItems);
+  
 
   const isInWishlist = (id) => {
     return wishlistItems.some((item) => item.id === id);
@@ -38,7 +41,10 @@ const ProductDetailsContainer = ({ productDetails }) => {
 
   const dispatch = useDispatch();
   const handleBuyNow = () => {
-    dispatch(addToCart(productDetails));
+    const product = {...productDetails, orderQuantity: quantity}
+    dispatch(addToCart(product));
+    navigate('/cart');
+
   };
   const handleWishlist = () => {
     dispatch(toggleWishlistItem(productDetails));
