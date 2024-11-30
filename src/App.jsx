@@ -4,6 +4,8 @@ import Home from "./Components/Home";
 import SignUpLogin from "./Components/SignUpLogin";
 import ProductContainer from "./Components/ProductContainer";
 import AllProductView from "./Components/AllProductView";
+import WishlistContainer from "./Components/wishlistContainer";
+import CartPage from "./Components/CartPage";
 
 const AppLayout = () => {
   return (
@@ -27,6 +29,8 @@ const router = createBrowserRouter([
       { path: "/signUpLogin", element: <SignUpLogin /> },
       { path: "/product/:id", element: <ProductContainer /> },
       { path: "/allProduct/:category", element: <AllProductView /> },
+      { path: "/wishlist", element: <WishlistContainer /> },
+      { path: "/cart", element: <CartPage /> },
       { path: "*", element: <NotFoundPage /> },
     ],
   },
