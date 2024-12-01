@@ -11,13 +11,16 @@ const WishlistContainer = () => {
     dispatch(removeFromWishlist(id));
   };
   const handleAddToCart = (data) => {
-    const product = {...data, orderQuantity: data.minimumOrderQuantity}
+    const product = { ...data, orderQuantity: data.minimumOrderQuantity };
     dispatch(addToCart(product));
   };
 
   return (
     <div className="mt-10 md: mx-32">
-      <div className="text-xl font-title my-2"><span>Wishlist ({wishlistItems.length})</span></div>
+      <div className="text-xl font-title my-2">
+        <span>Wishlist ({wishlistItems.length})</span>
+      </div>
+      {!wishlistItems.length && <span className="text-base">Looks like the Wishlist is empty.</span> }
       <div className="flex flex-start gap-5 flex-wrap">
         {wishlistItems &&
           wishlistItems.map((item) => (
