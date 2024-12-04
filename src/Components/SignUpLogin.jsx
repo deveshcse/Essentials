@@ -1,26 +1,32 @@
-import React from "react";
-import { useState, useRef } from "react";
-import {useSelector} from "react-redux";
+import { useState } from "react";
+import { registerUser, loginUser } from "../Utils/authApis";
+import { useDispatch } from "react-redux";
+import { loginSuccess } from "../Utils/authSlice";
+import { useNavigate } from "react-router-dom";
 
 const SignUpLogin = () => {
   const [signUpForm, setSignUpForm] = useState(true);
+  const [username, setUserame] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, SetPassword] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const name = useRef(null);
-  const email = useRef(null);
-  const password = useRef(null);
-
-  const handleClick = () => {
-    console.log(
-      "onSubmit",
-      "name:",
-      name.current.value,
-      "email:",
-      email.current.value,
-      "password:",
-      password.current.value
-    );
+  const handleClick = async () => {
+    if (signUpForm) {
+      registerUser({ username, email, password });
+    } else {
+      try {
+        const data = await loginUser({ email, password });
+        localStorage.setItem("token", JSON.stringify(data.data.accessToken));
+        dispatch(loginSuccess());
+        navigate(-1);
+        
+      } catch (err) {
+        console.error(err.message);
+      }
+    }
   };
-
   return (
     <div className="flex p-2 bg-teal-100 mx-auto justify-center">
       <div className="p-20 bg-transparent border-2 border-gray-400 rounded-lg">
@@ -40,20 +46,23 @@ const SignUpLogin = () => {
           {signUpForm && (
             <input
               type="text"
-              ref={name}
-              placeholder="Name"
+              value={username}
+              placeholder="Username"
               className="p-2 rounded-lg"
+              onChange={(e) => setUserame(e.target.value)}
             />
           )}
           <input
             type="email"
-            ref={email}
             placeholder="Email"
+            value={email}
             className="p-2 rounded-lg"
+            onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type="password"
-            ref={password}
+            value={password}
+            onChange={(e) => SetPassword(e.target.value)}
             placeholder="Password"
             className="p-2 rounded-lg"
           />
@@ -67,7 +76,7 @@ const SignUpLogin = () => {
         </form>
         <div className="text-center mt-4">
           <span>
-            {signUpForm ? `Already have account?` : `New to Essentials? `}{" "}
+            {signUpForm ? `Already have account?` : `New to Essentials? `}
           </span>
           <span
             className="cursor-pointer underline"
@@ -82,6 +91,3 @@ const SignUpLogin = () => {
 };
 
 export default SignUpLogin;
-// onChange={(e) => setEmail(e.target.value)}
-//             onChange={(e) => setPassword(e.target.value)}
-//               onChange={(e) => setName(e.target.value)}

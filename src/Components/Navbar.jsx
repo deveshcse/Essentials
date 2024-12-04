@@ -5,10 +5,12 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FaRegHeart } from "react-icons/fa";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
+import { FaRegUser } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const isAuthenticated = useSelector((state)=>state.auth.isAuthenticated); 
   return (
     <div className="sticky top-0 z-50 w-full bg-white shadow-md">
       <div className="flex justify-between items-center p-4 md:px-32">
@@ -36,12 +38,14 @@ const Navbar = () => {
           >
             About
           </Link>
-          <Link
-            to="/signUpLogin"
-            className="font-title text-base hover:text-gray-600"
-          >
-            SignUp
-          </Link>
+          {!isAuthenticated && (
+            <Link
+              to="/signUpLogin"
+              className="font-title text-base hover:text-gray-600"
+            >
+              SignUp
+            </Link>
+          )}
         </div>
 
         {/* Search and Icons */}
@@ -61,8 +65,7 @@ const Navbar = () => {
               <FaRegHeart size={24} className="relative hover:text-gray-600" />
             </button>
           </Link>
-          <Link to={'/cart'}>
-    
+          <Link to={"/cart"}>
             <button>
               <AiOutlineShoppingCart
                 size={24}
@@ -70,6 +73,11 @@ const Navbar = () => {
               />
             </button>
           </Link>
+          {isAuthenticated && (
+            <Link>
+              <FaRegUser size={24}/>
+            </Link>
+          )}
           <button
             className="md:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
