@@ -16,7 +16,7 @@ const WishlistContainer = () => {
   };
 
   return (
-    <div className="mt-10 md: mx-32">
+    <div className="mt-10 mx-5 md:mx-32">
       <div className="text-xl font-title my-2">
         <span>Wishlist ({wishlistItems.length})</span>
       </div>
