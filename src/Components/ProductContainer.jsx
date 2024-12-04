@@ -20,7 +20,7 @@ const ProductContainer = () => {
 
   if(productDetails){
   return (
-    <div className='mt-10 md:px-32 flex flex-col md:flex-row gap-8'>
+    <div className='px-5 mt-10 md:px-32 flex flex-col md:flex-row gap-8'>
     <ProductImageContainer images = {productDetails.images}/>
     <ProductDetailsContainer productDetails={productDetails} />
     </div>
