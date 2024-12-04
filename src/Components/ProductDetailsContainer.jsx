@@ -106,7 +106,7 @@ const ProductDetailsContainer = ({ productDetails }) => {
         </div>
       )}
       <div className="flex gap-4 items-center justify-start mt-2">
-        <div className="flex  border-2 w-fit border-gray-400 rounded-md">
+        <div className="flex  border-2 w-fit border-gray-400 rounded-md ">
           <button
             className="p-2 border-r-2 border-gray-400  focus:bg-red-600 rounded-l-md "
             onClick={decreaseQuantity}
