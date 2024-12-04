@@ -21,7 +21,7 @@ const CartPage = () => {
 
 if (cartItems.length == 0) {
   return (
-    <div className="md:mx-32 mt-10 flex gap-2 items-center">
+    <div className="mx-5 md:mx-32 mt-10 flex gap-2 items-center">
       <span className="text-lg font-title text-gray-700">Opps...., Looks like the cart is empty.</span>
       <button className="border-2 border-gray-400 px-1 rounded-md font-title" onClick={()=> navigate(-1)}> 
         Return To Shop
@@ -30,7 +30,7 @@ if (cartItems.length == 0) {
   );
 }  
 if(cartItems.length > 0){  return (
-  < div className="mt-10 md:mx-32 ">
+  < div className="mt-10 mx-5 md:mx-32 ">
     <div className="font-title text-base grid grid-cols-4 justify-between mb-5 bg-black text-white py-2 px-1">
       <span className="">Product</span>
       <span>Price</span>
@@ -45,11 +45,11 @@ if(cartItems.length > 0){  return (
           className="grid grid-cols-4 items-center justify-between font-title text-base my-2 "
         >
           <div className="flex gap-5 items-center justify-start ">
-            <div className="bg-gray-600 rounded-md">
+            <div className="bg-gray-600 rounded-md md:max-h-20  md:max-w-20">
               <img
                 src={item.thumbnail}
-                alt=""
-                className="max-h-20  max-w-20 aspect-square object-cover"
+                alt="product-image"
+                className="aspect-square object-cover"
               />
             </div>
             <span>{item.title}</span>
@@ -93,7 +93,7 @@ if(cartItems.length > 0){  return (
         </div>
         <div className="my-2  flex justify-between">
           <span>Subtotal:</span>
-          <span>${Math.ceil(subtotal)}</span>
+          <span>${subtotal}</span>
         </div>
         <div className=" my-2 h-[1px] w-full bg-gray-400"></div>
         <div className="my-2  flex justify-between">
@@ -108,7 +108,7 @@ if(cartItems.length > 0){  return (
 
         <div className="my-2 flex justify-center items-center">
           <div>
-            <button className="bg-red-500 p-2 rounded-md text-white ">
+            <button className="bg-red-500 p-2 rounded-md text-white " onClick={() => navigate('/checkout')}>
               Proceed to Checkout
             </button>
           </div>
