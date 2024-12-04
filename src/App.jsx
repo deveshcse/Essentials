@@ -6,6 +6,7 @@ import ProductContainer from "./Components/ProductContainer";
 import AllProductView from "./Components/AllProductView";
 import WishlistContainer from "./Components/wishlistContainer";
 import CartPage from "./Components/CartPage";
+import CheckoutPage from "./Components/CheckoutPage";
 
 const AppLayout = () => {
   return (
@@ -31,6 +32,7 @@ const router = createBrowserRouter([
       { path: "/allProduct/:category", element: <AllProductView /> },
       { path: "/wishlist", element: <WishlistContainer /> },
       { path: "/cart", element: <CartPage /> },
+      { path: "/checkout", element: <CheckoutPage /> },
       { path: "*", element: <NotFoundPage /> },
     ],
   },
