@@ -40,7 +40,7 @@ const FlashSaleContainer = () => {
   };
 
   return (
-    <div className="my-4  md:mx-32 flex flex-col gap-5">
+    <div className="my-4 mx-5 md:mx-32 flex flex-col gap-5">
       <div className="flex gap-4 justify-start items-center">
         <div className="h-10 w-5 bg-red-500 "></div>
 
