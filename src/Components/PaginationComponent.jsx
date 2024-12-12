@@ -18,21 +18,31 @@ const PaginationComponent = () => {
   };
 
   const setCurrentPage = (page) => {
-    if(page>=0 && page<=totalPages.length){setPage(page);}
+    if (page >= 0 && page <= totalPages.length) {
+      setPage(page);
+    }
   };
 
   useEffect(() => {
     getData();
   }, [page]);
 
-
   return (
     <div className="mx-5 md:mx-32 my-5">
+      <div className="my-5 flex flex-col">
+        <div className="flex items-center justify-start gap-5">
+          <div className="w-5 h-10 bg-red-500"></div> <span className="font-title font-semibold text-lg text-red-500">Our Products</span>{" "}
+        </div>
+        <span className="mt-2 text-4xl font-title font-bold">
+          Explore Our Products
+        </span>
+      </div>
       <div className="flex gap-5 flex-wrap">
         {products.products &&
           products.products.map((product) => (
-            <Link to={/product/ + product.id}  key={product.id} >
-            <ProductCard  props={product} /> </Link>
+            <Link to={/product/ + product.id} key={product.id}>
+              <ProductCard props={product} />{" "}
+            </Link>
           ))}
       </div>
       <div className="my-4 flex gap-4 flex-wrap justify-center items-center text-xl font-heading">
