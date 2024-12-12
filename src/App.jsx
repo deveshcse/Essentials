@@ -4,7 +4,7 @@ import Home from "./Components/Home";
 import SignUpLogin from "./Components/SignUpLogin";
 import ProductContainer from "./Components/ProductContainer";
 import AllProductView from "./Components/AllProductView";
-import WishlistContainer from "./Components/wishlistContainer";
+import WishlistContainer from "./Components/WishlistContainer";
 import CartPage from "./Components/CartPage";
 import CheckoutPage from "./Components/CheckoutPage";
 
