@@ -59,7 +59,7 @@ const FlashSaleContainer = () => {
           <Timer timerEndDate={timerEndDate} />
         </div>
 
-        <div className="flex gap-4 items-center mt-4 ">
+        <div className="flex md:gap-4 items-center mt-4 ">
           <button onClick={getPreviousCard}>
             <BsFillArrowLeftCircleFill size={24} color="gray" />
           </button>

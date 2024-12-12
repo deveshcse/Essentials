@@ -10,6 +10,7 @@ import { addToCart } from "../Utils/CartSlice";
 import { toggleWishlistItem } from "../Utils/WishlistSlice";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { motion } from "motion/react";
 
 const ProductDetailsContainer = ({ productDetails }) => {
   const {
@@ -25,11 +26,10 @@ const ProductDetailsContainer = ({ productDetails }) => {
     category,
     stock,
   } = productDetails;
-  
+
   const navigate = useNavigate();
   const wishlistItems = useSelector((state) => state.wishlist.wishlistItems);
   const cartItems = useSelector((state) => state.cart.cartItems);
-  
 
   const isInWishlist = (id) => {
     return wishlistItems.some((item) => item.id === id);
@@ -41,10 +41,9 @@ const ProductDetailsContainer = ({ productDetails }) => {
 
   const dispatch = useDispatch();
   const handleBuyNow = () => {
-    const product = {...productDetails, orderQuantity: quantity}
+    const product = { ...productDetails, orderQuantity: quantity };
     dispatch(addToCart(product));
-    navigate('/cart');
-
+    navigate("/cart");
   };
   const handleWishlist = () => {
     dispatch(toggleWishlistItem(productDetails));
@@ -107,45 +106,60 @@ const ProductDetailsContainer = ({ productDetails }) => {
       )}
       <div className="flex gap-4 items-center justify-start mt-2">
         <div className="flex  border-2 w-fit border-gray-400 rounded-md ">
-          <button
-            className="p-2 border-r-2 border-gray-400  focus:bg-red-600 rounded-l-md "
+          <motion.button whileTap={{scale:0.8}}
+            className="p-2 rounded-md active:bg-red-400 "
             onClick={decreaseQuantity}
           >
             <AiOutlineMinus size={24} />
-          </button>
+          </motion.button>
           <input
             type="number"
             value={quantity}
             onChange={(e) => setQuantity(e.target.value)}
-            className=" text-xl font-title font-medium focus:outline-none border-none w-16 text-center appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none "
+            className=" text-xl font-title font-medium focus:outline-none border-l-2 border-r-2 border-gray-400 w-16 text-center appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none "
           />
-          <button
-            className="p-2 border-l-2 border-gray-400 focus:bg-red-600 rounded-r-md transition-all"
+          <motion.button  whileTap={{scale:0.8}}
+            className="p-2 rounded-md active:bg-red-400"
             onClick={increaseQuantity}
           >
             <IoAddOutline size={24} />
-          </button>
+          </motion.button>
         </div>
-        <div
-          className={`flex items-center  border-2 border-gray-400 text-base font-title p-2 rounded-md font-medium ${
-            isInCartList(id) ? "bg-red-500" : "bg-white"
-          } `}
-        >
-          <button onClick={handleBuyNow}>Buy Now</button>
+        <div className='flex items-center'>
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            className={`border-2 border-gray-400 text-base font-title p-2 rounded-md font-medium ${
+              isInCartList(id) ? "bg-red-500" : "bg-white"
+            } `}
+            onClick={handleBuyNow}
+          >
+            Buy Now
+          </motion.button>
         </div>
         <div className="flex items-center  border-2 border-gray-400 p-2 rounded-md">
           {isInWishlist(id) ? (
-            <FaHeart
-              size={24}
-              onClick={handleWishlist}
-              className="text-red-500 cursor-pointer"
-            />
+            <motion.div
+              whileTap={{ scale: 0.8 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
+              <FaHeart
+                size={24}
+                onClick={handleWishlist}
+                className="text-red-500 cursor-pointer"
+              />
+            </motion.div>
           ) : (
-            <FaRegHeart
-              size={24}
-              onClick={handleWishlist}
-              className="text-gray-500 hover:text-rose-300 cursor-pointer"
-            />
+            <motion.div
+              whileTap={{ scale: 0.8 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
+              <FaRegHeart
+                size={24}
+                onClick={handleWishlist}
+                className="text-gray-500 hover:text-rose-300 cursor-pointer"
+              />
+            </motion.div>
           )}
         </div>
       </div>

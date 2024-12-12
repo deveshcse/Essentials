@@ -3,28 +3,28 @@ import RatingComponent from "./RatingComponent";
 import { useDispatch } from "react-redux";
 import { toggleWishlistItem } from "../Utils/WishlistSlice";
 import { useSelector } from "react-redux";
-
+import { motion } from "motion/react";
 const ProductCard = ({ props }) => {
-
   const { id, title, thumbnail, price, rating, discountPercentage, reviews } =
     props;
-  
+
   const dispatch = useDispatch();
-  const wishlistItems = useSelector(state => state.wishlist.wishlistItems);
-  
-  const isInWishlist =(id) =>{
-    return wishlistItems.some(item => item.id === id);
+  const wishlistItems = useSelector((state) => state.wishlist.wishlistItems);
+
+  const isInWishlist = (id) => {
+    return wishlistItems.some((item) => item.id === id);
   };
 
   const handleClickOnWishlistButton = (e) => {
     e.stopPropagation(); // Prevent the click from propagating to the Link
-    e.preventDefault();  // Prevent navigation if needed
+    e.preventDefault(); // Prevent navigation if needed
     dispatch(toggleWishlistItem(props));
-    
   };
 
   return (
-    <div className="min-w-64">
+    <motion.div
+      whileHover={{scale: 0.95}}
+      className="min-w-64 max-w-64 ">
       <div className="relative">
         <div className=" bg-gray-200 rounded-md">
           <img
@@ -70,7 +70,7 @@ const ProductCard = ({ props }) => {
           <span className="text-gray-500 font-semibold">{reviews.length}</span>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

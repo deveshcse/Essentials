@@ -1,10 +1,7 @@
-import React from "react";
-import SignUpLogin from "./SignUpLogin";
-import Footer from "./Footer";
 import Filters from "./Filters";
 import Carousal from "./Carousal";
-import Timer from "./Timer";
 import FlashSaleContainer from "./FlashSaleContainer";
+import PaginationComponent from "./PaginationComponent";
 const Home = () => {
   return (
     <div className="relative z-10">
@@ -14,6 +11,7 @@ const Home = () => {
       </div>
 
       <FlashSaleContainer />
+      <PaginationComponent />
     </div>
   );
 };
