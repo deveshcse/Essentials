@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { FaCircleChevronLeft, FaCircleChevronRight } from "react-icons/fa6";
 import ProductCard from "./ProductCard";
 import { Link } from "react-router-dom";
-
+import { motion } from "motion/react";
 const PaginationComponent = () => {
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(0);
@@ -46,15 +46,17 @@ const PaginationComponent = () => {
           ))}
       </div>
       <div className="my-4 flex gap-4 flex-wrap justify-center items-center text-xl font-heading">
-        <button
+        <motion.button
+        whileTap={{scale:0.8}}
           className=" bg-red-600 rounded-full"
           onClick={() => setCurrentPage(page - 1)}
         >
           <FaCircleChevronLeft size={32} />
-        </button>
+        </motion.button>
         {products.products &&
           totalPages.map((_, index) => (
-            <button
+            <motion.button
+            whileTap={{scale:0.8}}
               key={index}
               className={`md:block rounded-full h-8 w-8 
                 ${
@@ -67,14 +69,15 @@ const PaginationComponent = () => {
               onClick={() => setCurrentPage(index)}
             >
               {index + 1}
-            </button>
+            </motion.button>
           ))}
-        <button
+        <motion.button
+        whileTap={{scale:0.8}}
           className=" bg-red-600 rounded-full"
           onClick={() => setCurrentPage(page + 1)}
         >
           <FaCircleChevronRight size={32} />
-        </button>
+        </motion.button>
       </div>
     </div>
   );
